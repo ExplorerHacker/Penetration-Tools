@@ -1,7 +1,8 @@
 # sub-domain crawler
 import requests, termcolor
 from datetime import datetime
-# from tabulate import tabulate
+
+
 
 start=datetime.now()
 
@@ -11,7 +12,7 @@ try:
 
     def discover_subdomain(domain):
         try:
-            if 'http://'+domain:
+            if 'http://'+ domain:
                 return requests.get("http://" + domain)
             elif 'https://'+domain:
                 return requests.get("https://" + domain)
@@ -30,10 +31,6 @@ try:
                 resultUrl = discover_subdomain(result)
                 res = discover_subdomain(result)
                 if res:
-                    # table = [
-                    #     [result, resultUrl.url]
-                    # ]
-                    # print(tabulate(table))
                     print(termcolor.colored("[+] Discover subdomain ==> ", 'green') + termcolor.colored(result, 'blue') + '    ' + termcolor.colored(resultUrl.url, 'blue'))
                     
     else:
@@ -46,4 +43,4 @@ try:
 except KeyboardInterrupt:
     print(termcolor.colored('[-] Keyboard Interupted!!!', 'red'))
     
-           
+    
